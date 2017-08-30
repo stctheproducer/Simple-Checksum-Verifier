@@ -1,5 +1,5 @@
 # Simple Checksum Verifier
-Compares check-sums of a selected file with newly generated check-sums to ensure file integrity.
+Compares checksums of a selected file with newly generated checksums to ensure file integrity.
 
 The program was created using Windows 10 batch processing via command prompt.
 
