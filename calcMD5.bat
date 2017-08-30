@@ -1,0 +1,1 @@
+certUtil -hashfile %~fs1 MD5 >> tmpFile.txt

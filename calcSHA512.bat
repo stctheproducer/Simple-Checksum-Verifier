@@ -1,0 +1,1 @@
+certUtil -hashfile %~fs1 SHA512 >> tmpFile.txt
