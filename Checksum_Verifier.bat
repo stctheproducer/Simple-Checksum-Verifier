@@ -19,10 +19,10 @@ ECHO Checksum Verifier 1.0.0.0
 ECHO Written by Chanda Mulenga
 ECHO Email: stconeten@gmail.com &ECHO.
 
-ECHO -----------------------------------------------------------------
-ECHO ENSURE THE FILE IS IN THE SAME DIRECTORY. INCLUDE FILE EXTENSION.
-ECHO -----------------------------------------------------------------
-SET /P file="Enter filename (include file extension): "
+ECHO ---------------------------------------------------------------------------
+ECHO      ENSURE THE FILE IS IN THE SAME DIRECTORY. INCLUDE FILE EXTENSION.
+ECHO ---------------------------------------------------------------------------
+SET /P file="Enter filename: "
 
 ::Generate checksums
 CALL calcMD5 %file%
@@ -45,24 +45,24 @@ CALL :UCase genSHA512 GENSHA512
 
 :MENU
 ECHO.
-ECHO ***************************************************
-ECHO               GENERATED CHECKSUMS
-ECHO ***************************************************
+ECHO ********************************************************
+ECHO                    GENERATED CHECKSUMS
+ECHO ********************************************************
 ECHO.
-ECHO    MD5: %GENMD5%
-ECHO   SHA1: %GENSHA1%
-ECHO SHA256: %GENSHA256%
-ECHO SHA512: %GENSHA512%
+ECHO         MD5: %GENMD5%
+ECHO        SHA1: %GENSHA1%
+ECHO      SHA256: %GENSHA256%
+ECHO      SHA512: %GENSHA512%
 ECHO.
-ECHO ***************************************************
-ECHO               SELECT A TASK BELOW
-ECHO ***************************************************
+ECHO ********************************************************
+ECHO                    SELECT A TASK BELOW
+ECHO ********************************************************
 ECHO.
-ECHO [1] Compare MD5 checksum with generated checksum
-ECHO [2] Compare SHA1 checksum with generated checksum
-ECHO [3] Compare SHA256 checksum with generated checksum
-ECHO [4] Compare SHA512 checksum with generated checksum
-ECHO [Q] Quit program
+ECHO      [1] Compare MD5 checksum with generated checksum
+ECHO      [2] Compare SHA1 checksum with generated checksum
+ECHO      [3] Compare SHA256 checksum with generated checksum
+ECHO      [4] Compare SHA512 checksum with generated checksum
+ECHO      [Q] Quit program
 ECHO.
 
 SET /P P="Your choice: "
@@ -76,14 +76,14 @@ IF /I "%P%"=="Q" GOTO :QUIT
 :MD5
 ECHO.
 SET /P checksum="MD5 checksum to verify: " &ECHO.
-ECHO Your input: %checksum%
-ECHO  Generated: %GENMD5%
-ECHO. & ECHO Now verifying... & ECHO.
+ECHO      Your input: %checksum%
+ECHO       Generated: %GENMD5%
+ECHO. & ECHO      Now verifying... & ECHO.
 
 IF /I "%checksum%"=="%GENMD5%" (
-    ECHO Your file is OK &ECHO.
+    ECHO      Your file is OK &ECHO.
 ) ELSE (
-    ECHO ERROR: Your file is corrupt &ECHO.
+    ECHO      ERROR: Your file is corrupt &ECHO.
 )
 
 GOTO :ASK
@@ -92,14 +92,14 @@ GOTO :ASK
 :SHA1
 ECHO.
 SET /P checksum="SHA1 checksum to verify: " &ECHO.
-ECHO Your input: %checksum%
-ECHO  Generated: %GENSHA1%
-ECHO. & ECHO Now verifying... & ECHO.
+ECHO      Your input: %checksum%
+ECHO       Generated: %GENSHA1%
+ECHO. & ECHO     Now verifying... & ECHO.
 
 IF /I "%checksum%"=="%GENSHA1%" (
-    ECHO Your file is OK &ECHO.
+    ECHO     Your file is OK &ECHO.
 ) ELSE (
-    ECHO ERROR: Your file is corrupt &ECHO.
+    ECHO      ERROR: Your file is corrupt &ECHO.
 )
 
 GOTO :ASK
@@ -108,14 +108,14 @@ GOTO :ASK
 :SHA256
 ECHO.
 SET /P checksum="SHA256 checksum to verify: " &ECHO.
-ECHO Your input: %checksum%
-ECHO  Generated: %GENSHA256%
-ECHO. & ECHO Now verifying... & ECHO.
+ECHO      Your input: %checksum%
+ECHO       Generated: %GENSHA256%
+ECHO. & ECHO      Now verifying... & ECHO.
 
 IF /I "%checksum%"=="%GENSHA256%" (
-    ECHO Your file is OK &ECHO.
+    ECHO      Your file is OK &ECHO.
 ) ELSE (
-    ECHO ERROR: Your file is corrupt &ECHO.
+    ECHO      ERROR: Your file is corrupt &ECHO.
 )
 
 GOTO :ASK
@@ -124,14 +124,14 @@ GOTO :ASK
 :SHA512
 ECHO.
 SET /P checksum="SHA512 checksum to verify: " &ECHO.
-ECHO Your input: %checksum%
-ECHO  Generated: %GENSHA512%
-ECHO. & ECHO Now verifying... & ECHO.
+ECHO      Your input: %checksum%
+ECHO       Generated: %GENSHA512%
+ECHO. & ECHO      Now verifying... & ECHO.
 
-IF /I "%checksum%"=="%GEN512%" (
-    ECHO Your file is OK &ECHO.
+IF /I "%checksum%"=="%GENSHA512%" (
+    ECHO      Your file is OK &ECHO.
 ) ELSE (
-    ECHO ERROR: Your file is corrupt &ECHO.
+    ECHO      ERROR: Your file is corrupt &ECHO.
 )
 
 GOTO :ASK
@@ -156,14 +156,14 @@ GOTO :EOF
 
 ::Prompt user to go to menu
 :ASK
-SET /P C="Do you want to go back to the menu? [Y/N]"
+SET /P C="     Do you want to go back to the menu? [Y/N]"
 IF /I "%C%"=="Y" CLS && GOTO :MENU
 IF /I "%C%"=="N" GOTO :QUIT
 
 ::Quit program
 :QUIT
 ECHO.
-ECHO The program will now close... & ECHO. & PAUSE
+ECHO      The program will now close... & ECHO. & PAUSE
 CLS
 
 ENDLOCAL
